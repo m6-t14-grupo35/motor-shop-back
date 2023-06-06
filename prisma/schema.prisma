@@ -1,0 +1,72 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id
+  name         String
+  email        String   @unique
+  phone        String
+  password     String
+  birthdate    DateTime
+  descriptiomn String
+  is_seller    Boolean
+  cpf          String
+  //createdAt DateTime
+  // udpated_ at DateTime @updatedAt
+  Ad           Ad[]
+}
+
+model Image {
+  id      String @id
+  cover   String
+  image_1 String
+  image_2 String
+  image_3 String
+  image_4 String
+  image_5 String
+  Ad      Ad     @relation(fields: [ad_id], references: [id])
+  ad_id   String @unique
+  //createdAt DateTime
+  // udpated_ at DateTime @updatedAt
+
+  @@map("images")
+}
+
+//enum Fuel {
+//    Gasolina
+//    Etanol
+//    Diesel
+//   GLP
+//    Hybrid
+//    Electric
+//}
+
+model Ad {
+  id          String   @id
+  brand       String
+  model       String
+  year        String
+  fuel        String
+  km          Int
+  color       String
+  price       Float //Int //Decimal  @db.Decimal()
+  description String
+  is_sold     Boolean
+  User        User     @relation(fields: [user_id], references: [id])
+  user_id     String
+  created_at  DateTime
+  // udpated_ at DateTime @updatedAt
+  // deleted_ at DateTime
+  Image       Image?
+
+  @@map("ads")
+}
