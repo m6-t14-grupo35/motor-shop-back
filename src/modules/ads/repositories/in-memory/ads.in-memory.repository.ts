@@ -13,7 +13,6 @@ export class AdsInMemoryRepository implements AdsRepository {
     Object.assign(newAd, {
       ...data,
       user_id: user_id,
-      is_sold:false
     });
 
     this.database.push(newAd);

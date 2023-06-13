@@ -4,8 +4,11 @@ import {
   IsEnum,
   IsNotEmpty,
   IsNumber,
+  IsOptional,
   IsString,
+  MaxLength,
 } from 'class-validator';
+import { defaultIfEmpty } from 'rxjs';
 
 enum FuelTypes {
   GASOLINA = 'Gasolina',
@@ -18,19 +21,22 @@ enum FuelTypes {
 export class CreateAdDto {
   @IsString()
   @IsNotEmpty()
+  @MaxLength(30)
   brand: string;
 
   @IsString()
   @IsNotEmpty()
+  @MaxLength(50)
   model: string;
 
   @IsString()
   @IsNotEmpty()
+  @MaxLength(4)
   year: string;
 
   @IsEnum(FuelTypes)
   @IsNotEmpty()
-  fuel: string;
+  fuel: string /* | FuelTypes */;
 
   @IsNumber()
   @IsNotEmpty()
@@ -38,9 +44,10 @@ export class CreateAdDto {
 
   @IsString()
   @IsNotEmpty()
+  @MaxLength(30)
   color: string;
 
-  @IsDecimal()
+  @IsNumber() //@IsDecimal
   @IsNotEmpty()
   price: number;
 
@@ -49,8 +56,9 @@ export class CreateAdDto {
   description: string;
 
   @IsBoolean()
-  is_sold: boolean; /* = false */
+  @IsOptional()
+  is_sold: boolean;
 
-  @IsString()
-  user_id: string;
+  /* @IsString()
+  user_id: string; */
 }
