@@ -1,3 +1,6 @@
+-- CreateEnum
+CREATE TYPE "Fuel" AS ENUM ('Gasolina', 'Etanol', 'Diesel', 'GLP', 'Hybrid', 'Electric');
+
 -- CreateTable
 CREATE TABLE "User" (
     "id" TEXT NOT NULL,
@@ -36,7 +39,7 @@ CREATE TABLE "ads" (
     "fuel" TEXT NOT NULL,
     "km" INTEGER NOT NULL,
     "color" TEXT NOT NULL,
-    "price" DECIMAL(65,30) NOT NULL,
+    "price" DOUBLE PRECISION NOT NULL,
     "description" TEXT NOT NULL,
     "is_sold" BOOLEAN NOT NULL,
     "user_id" TEXT NOT NULL,

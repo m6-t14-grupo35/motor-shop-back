@@ -7,6 +7,7 @@ import { AdsRepository } from './repositories/ads.repository';
 export class AdsService {
   constructor(private adsRepository: AdsRepository) {}
   async create(createAdDto: CreateAdDto, user_id: string) {
+    console.log(user_id)
     return await this.adsRepository.create(createAdDto, user_id)
   }
 

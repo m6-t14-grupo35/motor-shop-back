@@ -7,23 +7,21 @@ import { plainToInstance } from 'class-transformer';
 import { UpdateAdDto } from '../../dto/update-ad.dto';
 
 @Injectable()
-export class AdsPrismaRespository implements AdsRepository {
+export class AdsPrismaRepository implements AdsRepository {
   constructor(private prisma: PrismaService) {}
   async create(data: CreateAdDto, user_id: string): Promise<Ad> {
     const ad = new Ad();
     Object.assign(ad, {
       ...data,
+      user_id: user_id
     });
-    
     const newAd = await this.prisma.ad.create({
         data: {
           ...ad,
-          user_id: user_id,
-          is_sold: false
         },
       });
 
-    return plainToInstance(Ad, newAd);
+    return newAd;
   }
   async findAll(): Promise<Ad[]> {
     const ads = await this.prisma.ad.findMany();

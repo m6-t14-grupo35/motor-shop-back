@@ -14,13 +14,13 @@ model User {
   id           String   @id
   name         String
   email        String   @unique
-  phone        String
+  phone_number String
   password     String
-  birthdate    DateTime
-  descriptiomn String
+  birthdate    DateTime @db.Date
+  description  String
   is_seller    Boolean
   cpf          String
-  //createdAt DateTime
+  createdAt    DateTime
   // udpated_ at DateTime @updatedAt
   Ad           Ad[]
 }
@@ -41,26 +41,26 @@ model Image {
   @@map("images")
 }
 
-//enum Fuel {
-//    Gasolina
-//    Etanol
-//    Diesel
-//   GLP
-//    Hybrid
-//    Electric
-//}
+enum Fuel {
+  Gasolina
+  Etanol
+  Diesel
+  GLP
+  Hybrid
+  Electric
+}
 
 model Ad {
   id          String   @id
   brand       String
   model       String
   year        String
-  fuel        String
+  fuel        String //Fuel
   km          Int
   color       String
   price       Float //Int //Decimal  @db.Decimal()
   description String
-  is_sold     Boolean
+  is_sold     Boolean  @default(false)
   User        User     @relation(fields: [user_id], references: [id])
   user_id     String
   created_at  DateTime
