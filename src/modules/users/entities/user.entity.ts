@@ -1,5 +1,6 @@
 import { randomUUID } from 'crypto';
 import { Exclude } from 'class-transformer';
+import { Ad } from 'src/modules/ads/entities/ad.entity';
 
 export class User {
   readonly id: string;
@@ -10,6 +11,7 @@ export class User {
   description: string;
   is_seller: boolean;
   cpf: string;
+  Ad?: Ad[]
   readonly createdAt: Date;
   //updated_at: Date
   //deleted_at: Date
