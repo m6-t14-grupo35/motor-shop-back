@@ -5,6 +5,7 @@ import { CreateAdDto } from '../../dto/create-ad.dto';
 import { Ad } from '../../entities/ad.entity';
 import { plainToInstance } from 'class-transformer';
 import { UpdateAdDto } from '../../dto/update-ad.dto';
+import { Decimal } from '@prisma/client/runtime';
 
 @Injectable()
 export class AdsPrismaRepository implements AdsRepository {
@@ -13,7 +14,7 @@ export class AdsPrismaRepository implements AdsRepository {
     const ad = new Ad();
     Object.assign(ad, {
       ...data,
-      user_id: user_id
+      user_id: user_id,
     });
     const newAd = await this.prisma.ad.create({
         data: {
@@ -27,6 +28,7 @@ export class AdsPrismaRepository implements AdsRepository {
     const ads = await this.prisma.ad.findMany();
     return ads;
   }
+ 
   async findOne(id: string): Promise<Ad> {
     const ad = await this.prisma.ad.findUnique({
       where: { id }

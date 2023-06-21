@@ -3,11 +3,11 @@ import { CreateAdDto } from './dto/create-ad.dto';
 import { UpdateAdDto } from './dto/update-ad.dto';
 import { AdsRepository } from './repositories/ads.repository';
 
+
 @Injectable()
 export class AdsService {
   constructor(private adsRepository: AdsRepository) {}
   async create(createAdDto: CreateAdDto, user_id: string) {
-    console.log(user_id)
     return await this.adsRepository.create(createAdDto, user_id)
   }
 
@@ -24,11 +24,19 @@ export class AdsService {
   }
 
   async update(id: string, updateAdDto: UpdateAdDto) {
+    const ad = await this.adsRepository.findOne(id)
+    if(!ad){
+      throw new NotFoundException("Advertisement not found.")
+    }
     return await this.adsRepository.update(id, updateAdDto)
   }
 
   @HttpCode(204)
   async remove(id: string) {
+    const ad = await this.adsRepository.findOne(id)
+    if(!ad){
+      throw new NotFoundException("Advertisement not found.")
+    }
     return await this.adsRepository.delete(id)
   }
 }

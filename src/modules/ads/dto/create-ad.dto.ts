@@ -8,7 +8,6 @@ import {
   IsString,
   MaxLength,
 } from 'class-validator';
-import { defaultIfEmpty } from 'rxjs';
 
 enum FuelTypes {
   GASOLINA = 'Gasolina',
@@ -16,7 +15,7 @@ enum FuelTypes {
   DIESEL = 'Diesel',
   GLP = 'GLP',
   HYBRID = 'Hybrid',
-  ELECTTRIC = 'Electric',
+  ELECTRIC = 'Electric',
 }
 export class CreateAdDto {
   @IsString()
@@ -58,7 +57,4 @@ export class CreateAdDto {
   @IsBoolean()
   @IsOptional()
   is_sold: boolean;
-
-  /* @IsString()
-  user_id: string; */
 }

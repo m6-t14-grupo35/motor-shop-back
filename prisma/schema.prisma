@@ -16,27 +16,28 @@ model User {
   email        String   @unique
   phone_number String
   password     String
+  reset_token  String?
   birthdate    DateTime @db.Date
   description  String
   is_seller    Boolean
   cpf          String
   createdAt    DateTime
   // udpated_ at DateTime @updatedAt
-  Ad           Ad[]
+  ad           Ad[]
 }
 
 model Image {
-  id      String @id
-  cover   String
-  image_1 String
-  image_2 String
-  image_3 String
-  image_4 String
-  image_5 String
-  Ad      Ad     @relation(fields: [ad_id], references: [id])
-  ad_id   String @unique
-  //createdAt DateTime
-  // udpated_ at DateTime @updatedAt
+  id        String   @id
+  cover     String
+  image_1   String
+  image_2   String
+  image_3   String
+  image_4   String
+  image_5   String
+  ad        Ad       @relation(fields: [ad_id], references: [id])
+  ad_id     String   @unique
+  created_at DateTime
+  // udpated_at DateTime @updatedAt
 
   @@map("images")
 }

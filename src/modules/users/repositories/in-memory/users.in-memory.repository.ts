@@ -4,9 +4,22 @@ import { UpdateUserDto } from '../../dto/update-user.dto';
 import { User } from '../../entities/user.entity';
 import { UsersRepository } from '../users.repository';
 import { plainToInstance } from 'class-transformer';
+import { Ad } from 'src/modules/ads/entities/ad.entity';
 
 @Injectable()
 export class UsersInMemoryRepository implements UsersRepository {
+  findByToken(token: string): User | Promise<User> {
+    throw new Error('Method not implemented.');
+  }
+  updateToken(email: string, resetToken: string): void | Promise<void> {
+    throw new Error('Method not implemented.');
+  }
+  updatePassword(id: string, password: string): void | Promise<void> {
+    throw new Error('Method not implemented.');
+  }
+  findAds(user_id: string): Promise<Ad[]> {
+    throw new Error('Method not implemented.');
+  }
   private database: User[] = [];
   create(data: CreateUserDto): User | Promise<User> {
     const newUser = new User();
