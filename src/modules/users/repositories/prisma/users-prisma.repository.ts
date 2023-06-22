@@ -40,7 +40,7 @@ export class UsersPrismaRepository implements UsersRepository {
     const ad = await this.prisma.ad.findMany({
       where: { user_id },
     });
-
+    
     return ad;
   }
 

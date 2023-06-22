@@ -5,5 +5,5 @@ import {
   
   export class ResetTokenDto {
     @IsString()
-    resetToken: string;
+    reset_token: string;
   }
