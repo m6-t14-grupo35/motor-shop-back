@@ -55,14 +55,12 @@ export class UsersController {
 
   @HttpCode(200)
   @Post('resetPassword')
-  @UseGuards(JwtAuthGuard)
   async sendEmailResetPassword(@Body('email') email: string) {
     await this.usersService.sendEmailResetPassword(email);
     return { message: 'token sent' };
   }
 
   @Patch('resetPassword/:token')
-  @UseGuards(JwtAuthGuard)
   async resetPassword(
     @Param('token') token: string,
     @Body('password') password: string,

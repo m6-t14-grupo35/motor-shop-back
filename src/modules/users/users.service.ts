@@ -49,6 +49,7 @@ export class UsersService {
   }
 
   async findAds(id: string) {
+    console.log(id)
     return await this.usersRepository.findAds(id);
   }
 
