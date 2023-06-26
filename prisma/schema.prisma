@@ -21,7 +21,7 @@ model User {
   description  String
   is_seller    Boolean
   cpf          String
-  createdAt    DateTime
+  created_at    DateTime
   // udpated_ at DateTime @updatedAt
   ad           Ad[]
 }

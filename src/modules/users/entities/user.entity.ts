@@ -12,7 +12,7 @@ export class User {
   is_seller: boolean;
   cpf: string;
   Ad?: Ad[]
-  readonly createdAt: Date;
+  readonly created_at: Date;
   //updated_at: Date
   //deleted_at: Date
 
@@ -21,7 +21,7 @@ export class User {
 
   constructor() {
     this.id = randomUUID();
-    this.createdAt = new Date();
+    this.created_at = new Date();
     //this.updated_at = null
     //this.deleted_at = null
   }

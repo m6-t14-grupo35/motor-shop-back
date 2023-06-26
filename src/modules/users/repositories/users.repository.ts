@@ -14,5 +14,5 @@ export abstract class UsersRepository {
   abstract update(id: string, data: UpdateUserDto): Promise<User> | User;
   abstract delete(id: string): Promise<void> | void;
   abstract updateToken(email: string, resetToken: string): Promise<void> | void;
-  abstract updatePassword(email: string, resetToken: string): Promise<void> | void;
+  abstract updatePassword(email: string, password: string): Promise<void> | void;
 }
