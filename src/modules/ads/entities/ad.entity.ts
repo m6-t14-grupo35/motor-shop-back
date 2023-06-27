@@ -13,7 +13,7 @@ export class Ad {
     readonly id: string
     brand: string
     model: string
-    year: string
+    year: number
     fuel: string //FuelTypes
     km: number
     color: string

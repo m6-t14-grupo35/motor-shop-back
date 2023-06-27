@@ -8,9 +8,13 @@ import { ImagesInMemory } from './repositories/in-memory/images.in-memory.reposi
 
 @Module({
   controllers: [ImagesController],
-  providers: [ImagesService, PrismaService, {
-    provide: ImagesRepository,
-    useClass: ImagesPrismaRepository
-  }]
+  providers: [
+    ImagesService,
+    PrismaService,
+    {
+      provide: ImagesRepository,
+      useClass: ImagesPrismaRepository,
+    },
+  ],
 })
 export class ImagesModule {}

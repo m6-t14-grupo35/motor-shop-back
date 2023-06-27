@@ -19,7 +19,10 @@ export class ImagesController {
 
   @Post(':ad_id')
   @UseGuards(JwtAuthGuard)
-  create(@Body() createImageDto: CreateImageDto, @Param('ad_id') ad_id: string) {
+  create(
+    @Body() createImageDto: CreateImageDto,
+    @Param('ad_id') ad_id: string,
+  ) {
     return this.imagesService.create(createImageDto, ad_id);
   }
 

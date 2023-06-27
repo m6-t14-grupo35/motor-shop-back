@@ -21,21 +21,22 @@ model User {
   description  String
   is_seller    Boolean
   cpf          String
-  created_at    DateTime
+  created_at   DateTime
   // udpated_ at DateTime @updatedAt
   ad           Ad[]
+  Address      Address?
 }
 
 model Image {
-  id        String   @id
-  cover     String
-  image_1   String
-  image_2   String
-  image_3   String
-  image_4   String
-  image_5   String
-  ad        Ad       @relation(fields: [ad_id], references: [id])
-  ad_id     String   @unique
+  id         String   @id
+  cover      String
+  image_1    String
+  image_2    String
+  image_3    String
+  image_4    String
+  image_5    String
+  ad         Ad       @relation(fields: [ad_id], references: [id])
+  ad_id      String   @unique
   created_at DateTime
   // udpated_at DateTime @updatedAt
 
@@ -55,7 +56,7 @@ model Ad {
   id          String   @id
   brand       String
   model       String
-  year        String
+  year        Int
   fuel        String //Fuel
   km          Int
   color       String
@@ -70,4 +71,20 @@ model Ad {
   Image       Image?
 
   @@map("ads")
+}
+
+model Address {
+  id         String   @id
+  zip_code   String
+  state      String
+  city       String
+  street     String
+  number     Int
+  complement String
+  User       User     @relation(fields: [user_id], references: [id])
+  user_id    String   @unique
+  created_at DateTime
+  // udpated_at DateTime @updatedAt
+
+  @@map("addresses")
 }

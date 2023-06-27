@@ -15,11 +15,11 @@ export class ImagesService {
   }
 
   async findOne(id: string) {
-    const ad = await this.imagesRepository.findOne(id)
-    if(!ad){
-      throw new NotFoundException("Advertisement not found.")
+    const image = await this.imagesRepository.findOne(id)
+    if(!image){
+      throw new NotFoundException("Image(s) not found.")
     }
-    return ad;
+    return image;
   }
 
   async update(id: string, updateImageDto: UpdateImageDto) {
