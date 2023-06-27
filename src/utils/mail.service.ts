@@ -7,7 +7,7 @@ const mailGenerator = new Mailgen({
   theme: 'default',
   product: {
     name: 'Motor-Shop',
-    link: 'http://localhost:3001',
+    link: 'http://localhost:3000',
   },
 });
 
@@ -43,7 +43,7 @@ export class MailService {
           button: {
             color: '#DC4D2F',
             text: 'Reset your password',
-            link: `http://localhost:3001/users/resetPassword/${resetToken}`,
+            link: `http://localhost:3000/resetPassword/${resetToken}`,
           },
         },
         outro:

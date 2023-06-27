@@ -28,10 +28,10 @@ export class CreateAdDto {
   @MaxLength(50)
   model: string;
 
-  @IsString()
+  @IsNumber()
   @IsNotEmpty()
   @MaxLength(4)
-  year: string;
+  year: number;
 
   @IsEnum(FuelTypes)
   @IsNotEmpty()
