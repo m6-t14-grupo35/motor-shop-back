@@ -18,6 +18,7 @@ export class Ad {
     km: number
     color: string
     price: number
+    priceFIPE: number
     description: string
     is_sold: boolean = false
     user_id: string

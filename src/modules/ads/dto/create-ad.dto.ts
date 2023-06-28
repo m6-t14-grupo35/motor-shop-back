@@ -50,6 +50,10 @@ export class CreateAdDto {
   @IsNotEmpty()
   price: number;
 
+  @IsNumber()
+  @IsNotEmpty()
+  priceFIPE: number;
+
   @IsString()
   @IsNotEmpty()
   description: string;

@@ -11,13 +11,13 @@ datasource db {
 }
 
 model User {
-  id           String   @id
+  id           String    @id
   name         String
-  email        String   @unique
+  email        String    @unique
   phone_number String
   password     String
   reset_token  String?
-  birthdate    DateTime @db.Date
+  birthdate    DateTime  @db.Date
   description  String
   is_seller    Boolean
   cpf          String
@@ -25,6 +25,7 @@ model User {
   // udpated_ at DateTime @updatedAt
   ad           Ad[]
   Address      Address?
+  Comment      Comment[]
 }
 
 model Image {
@@ -53,7 +54,7 @@ enum Fuel {
 }
 
 model Ad {
-  id          String   @id
+  id          String    @id
   brand       String
   model       String
   year        Int
@@ -61,14 +62,16 @@ model Ad {
   km          Int
   color       String
   price       Float //Int //Decimal  @db.Decimal()
+  priceFIPE   Int //Int //Decimal  @db.Decimal()
   description String
-  is_sold     Boolean  @default(false)
-  User        User     @relation(fields: [user_id], references: [id])
+  is_sold     Boolean   @default(false)
+  User        User      @relation(fields: [user_id], references: [id])
   user_id     String
   created_at  DateTime
   // udpated_ at DateTime @updatedAt
   // deleted_ at DateTime
   Image       Image?
+  Comment     Comment[]
 
   @@map("ads")
 }
@@ -79,7 +82,7 @@ model Address {
   state      String
   city       String
   street     String
-  number     Int
+  number     Int      
   complement String
   User       User     @relation(fields: [user_id], references: [id])
   user_id    String   @unique
@@ -87,4 +90,17 @@ model Address {
   // udpated_at DateTime @updatedAt
 
   @@map("addresses")
+}
+
+model Comment {
+  id         String   @id
+  text       String   @db.Text
+  ad         Ad       @relation(fields: [ad_id], references: [id])
+  ad_id      String   
+  User       User     @relation(fields: [user_id], references: [id])
+  user_id    String
+  created_at DateTime 
+  updated_at DateTime @updatedAt
+
+  @@map("comments")
 }
