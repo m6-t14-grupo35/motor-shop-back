@@ -28,5 +28,5 @@ export class CreateAddressDto {
     @IsString()
     @IsNotEmpty()
     @MaxLength(30)
-    image_5: string;
+    complement: string;
 }
