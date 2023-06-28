@@ -30,7 +30,6 @@ export class CreateAdDto {
 
   @IsNumber()
   @IsNotEmpty()
-  @MaxLength(4)
   year: number;
 
   @IsEnum(FuelTypes)

@@ -41,17 +41,17 @@ export class UsersController {
     return this.usersService.findAds(id);
   }
 
-  @Patch(':id')
+  @Patch('')
   @UseGuards(JwtAuthGuard)
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto, @Request() req) {
-    return this.usersService.update(id, updateUserDto, req.user.id);
+  update(@Request() req ,@Body() updateUserDto: UpdateUserDto) {
+    return this.usersService.update( req.user.id, updateUserDto,);
   }
 
   @HttpCode(204)
-  @Delete(':id')
+  @Delete('')
   @UseGuards(JwtAuthGuard)
-  remove(@Param('id') id: string, @Request() req) {
-    return this.usersService.remove(id, req.user.id);
+  remove(@Request() req) {
+    return this.usersService.remove(req.user.id);
   }
 
   @HttpCode(200)
