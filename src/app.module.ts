@@ -5,7 +5,7 @@ import { AdsModule } from './modules/ads/ads.module';
 import { UsersModule } from './modules/users/users.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { ImagesModule } from './modules/images/images.module';
-import { AddressesModule } from './modules/addresses/addresses.module';
+//import { AddressesModule } from './modules/addresses/addresses.module';
 import { CommentsModule } from './modules/comments/comments.module';
 import { SoldsModule } from './modules/solds/solds.module';
 
