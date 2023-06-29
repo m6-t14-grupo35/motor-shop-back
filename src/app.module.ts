@@ -10,7 +10,7 @@ import { CommentsModule } from './modules/comments/comments.module';
 import { SoldsModule } from './modules/solds/solds.module';
 
 @Module({
-  imports: [AdsModule, UsersModule, AuthModule, ImagesModule, AddressesModule, CommentsModule, SoldsModule],
+  imports: [AdsModule, UsersModule, AuthModule, ImagesModule, /* AddressesModule, */ CommentsModule, SoldsModule],
   controllers: [AppController],
   providers: [AppService],
 })
