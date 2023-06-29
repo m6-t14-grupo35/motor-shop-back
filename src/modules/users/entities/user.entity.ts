@@ -11,7 +11,15 @@ export class User {
   description: string;
   is_seller: boolean;
   cpf: string;
-  Ad?: Ad[]
+
+  zip_code: string;
+  state: string;
+  city: string;
+  street: string;
+  number: number;
+  complement: string;
+  
+  Ad?: Ad[];
   readonly created_at: Date;
   //updated_at: Date
   //deleted_at: Date

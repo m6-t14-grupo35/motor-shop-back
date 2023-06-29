@@ -14,7 +14,9 @@ import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('users')
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
@@ -25,12 +27,14 @@ export class UsersController {
   }
 
   @Get()
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   findAll() {
     return this.usersService.findAll();
   }
 
   @Get(':id')
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   findOne(@Param('id') id: string) {
     return this.usersService.findOne(id);
@@ -42,6 +46,7 @@ export class UsersController {
   }
 
   @Patch('')
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   update(@Request() req ,@Body() updateUserDto: UpdateUserDto) {
     return this.usersService.update( req.user.id, updateUserDto,);
@@ -49,6 +54,7 @@ export class UsersController {
 
   @HttpCode(204)
   @Delete('')
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   remove(@Request() req) {
     return this.usersService.remove(req.user.id);
@@ -61,12 +67,12 @@ export class UsersController {
     return { message: 'token sent' };
   }
 
-  @Patch('resetPassword/:token')
+  @Patch('resetPassword/:reset_token')
   async resetPassword(
-    @Param('token') token: string,
+    @Param('reset_token') reset_token: string,
     @Body('password') password: string,
   ) {
-    await this.usersService.resetPassword(password, token);
+    await this.usersService.resetPassword(password, reset_token);
     return { message: 'Password successfully updated!' };
   }
 }

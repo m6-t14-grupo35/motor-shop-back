@@ -21,10 +21,18 @@ model User {
   description  String
   is_seller    Boolean
   cpf          String
+
+  zip_code   String
+  state      String
+  city       String
+  street     String
+  number     Int
+  complement String
+  
   created_at   DateTime
   // udpated_ at DateTime @updatedAt
   ad           Ad[]
-  Address      Address?
+  //Address      Address?
   Comment      Comment[]
   Sold         Sold[]
 }
@@ -78,21 +86,21 @@ model Ad {
   @@map("ads")
 }
 
-model Address {
-  id         String   @id
-  zip_code   String
-  state      String
-  city       String
-  street     String
-  number     Int
-  complement String
-  User       User     @relation(fields: [user_id], references: [id])
-  user_id    String   @unique
-  created_at DateTime
-  // udpated_at DateTime @updatedAt
+//model Address {
+//  id         String   @id
+//  zip_code   String
+//  state      String
+//  city       String
+//  street     String
+//  number     Int
+//  complement String
+//  User       User     @relation(fields: [user_id], references: [id])
+//  user_id    String   @unique
+//  created_at DateTime
+//     udpated_at DateTime @updatedAt
 
-  @@map("addresses")
-}
+//  @@map("addresses")
+//}
 
 model Comment {
   id         String   @id
