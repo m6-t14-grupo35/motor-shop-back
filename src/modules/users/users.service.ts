@@ -53,30 +53,12 @@ export class UsersService {
     return await this.usersRepository.findAds(id);
   }
 
-  async update(id: string, updateUserDto: UpdateUserDto, req_id: string) {
-    const user = await this.usersRepository.findOne(id);
-    if (!user) {
-      throw new NotFoundException('User not found.');
-    }
-    if (id != req_id) {
-      throw new ForbiddenException(
-        'Not allowed to update other users. You can patch just your own profile.',
-      );
-    }
+  async update(id: string,updateUserDto: UpdateUserDto) {
     return await this.usersRepository.update(id, updateUserDto);
   }
 
   @HttpCode(204)
-  async remove(id: string, req_id: string) {
-    const user = await this.usersRepository.findOne(id);
-    if (!user) {
-      throw new NotFoundException('User not found.');
-    }
-    if (id != req_id) {
-      throw new ForbiddenException(
-        'Not allowed to remove other users. You can delete just your own profile.',
-      );
-    }
+  async remove(id: string) {
     return await this.usersRepository.delete(id);
   }
 

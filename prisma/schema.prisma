@@ -26,6 +26,7 @@ model User {
   ad           Ad[]
   Address      Address?
   Comment      Comment[]
+  Sold         Sold[]
 }
 
 model Image {
@@ -72,6 +73,7 @@ model Ad {
   // deleted_ at DateTime
   Image       Image?
   Comment     Comment[]
+  Sold        Sold?
 
   @@map("ads")
 }
@@ -82,7 +84,7 @@ model Address {
   state      String
   city       String
   street     String
-  number     Int      
+  number     Int
   complement String
   User       User     @relation(fields: [user_id], references: [id])
   user_id    String   @unique
@@ -96,11 +98,22 @@ model Comment {
   id         String   @id
   text       String   @db.Text
   ad         Ad       @relation(fields: [ad_id], references: [id])
-  ad_id      String   
+  ad_id      String
   User       User     @relation(fields: [user_id], references: [id])
   user_id    String
-  created_at DateTime 
+  created_at DateTime
   updated_at DateTime @updatedAt
 
   @@map("comments")
+}
+
+model Sold {
+  id         String   @id
+  ad         Ad       @relation(fields: [ad_id], references: [id])
+  ad_id      String   @unique
+  User       User     @relation(fields: [user_id], references: [id])
+  user_id    String
+  created_at DateTime
+
+  @@map("solds")
 }
