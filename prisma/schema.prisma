@@ -53,14 +53,14 @@ model Image {
   @@map("images")
 }
 
-enum Fuel {
-  Gasolina
-  Etanol
-  Diesel
-  GLP
-  Hybrid
-  Electric
-}
+//enum Fuel {
+//  Gasolina
+//  Etanol
+//  Diesel
+//  GLP
+//  Hybrid
+//  Electric
+//}
 
 model Ad {
   id          String    @id
