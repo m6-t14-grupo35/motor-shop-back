@@ -40,11 +40,11 @@ model User {
 model Image {
   id         String   @id
   cover      String
-  image_1    String
-  image_2    String
-  image_3    String
-  image_4    String
-  image_5    String
+  image_1    String?
+  image_2    String?
+  image_3    String?
+  image_4    String?
+  image_5    String?
   ad         Ad       @relation(fields: [ad_id], references: [id])
   ad_id      String   @unique
   created_at DateTime
@@ -85,22 +85,6 @@ model Ad {
 
   @@map("ads")
 }
-
-//model Address {
-//  id         String   @id
-//  zip_code   String
-//  state      String
-//  city       String
-//  street     String
-//  number     Int
-//  complement String
-//  User       User     @relation(fields: [user_id], references: [id])
-//  user_id    String   @unique
-//  created_at DateTime
-//     udpated_at DateTime @updatedAt
-
-//  @@map("addresses")
-//}
 
 model Comment {
   id         String   @id

@@ -39,11 +39,11 @@ export class ImagesController {
     return this.imagesService.findOne(id);
   }
 
-  @Patch(':id')
+  @Patch(':ad_id')
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
-  update(@Param('id') id: string, @Body() updateImageDto: UpdateImageDto) {
-    return this.imagesService.update(id, updateImageDto);
+  update(@Param('ad_id') ad_id: string, @Body() updateImageDto: UpdateImageDto) {
+    return this.imagesService.update(ad_id, updateImageDto);
   }
 
   @Delete(':id')

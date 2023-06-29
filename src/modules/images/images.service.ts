@@ -22,12 +22,12 @@ export class ImagesService {
     return image;
   }
 
-  async update(id: string, updateImageDto: UpdateImageDto) {
-    const image = await this.imagesRepository.findOne(id)
+  async update(ad_id: string, updateImageDto: UpdateImageDto) {
+    /* const image = await this.imagesRepository.findOne(id)
     if(!image){
       throw new NotFoundException("Image(s) not found.")
-    }
-    return await this.imagesRepository.update(id, updateImageDto)
+    } */
+    return await this.imagesRepository.update(ad_id, updateImageDto)
   }
 
   @HttpCode(204)
