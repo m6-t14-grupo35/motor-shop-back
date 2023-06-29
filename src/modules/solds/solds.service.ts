@@ -1,26 +1,31 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateSoldDto } from './dto/create-sold.dto';
-import { UpdateSoldDto } from './dto/update-sold.dto';
+import { SoldsRepository } from './repositories/solds.respository';
 
 @Injectable()
 export class SoldsService {
-  create(createSoldDto: CreateSoldDto) {
-    return 'This action adds a new sold';
+  constructor(private soldsRepository: SoldsRepository) {}
+  async create(createSoldDto: CreateSoldDto, ad_id: string, user_id: string) {
+    return await this.soldsRepository.create(createSoldDto, ad_id, user_id);
   }
 
-  findAll() {
-    return `This action returns all solds`;
+  async findAll() {
+    return await this.soldsRepository.findAll();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} sold`;
+  async findOne(id: string) {
+    const sold = await this.soldsRepository.findOne(id);
+    if (!sold) {
+      throw new NotFoundException('Sold not found');
+    }
+    return sold;
   }
 
-  update(id: number, updateSoldDto: UpdateSoldDto) {
-    return `This action updates a #${id} sold`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} sold`;
+  async remove(id: string) {
+    const sold = await this.soldsRepository.findOne(id);
+    if (!sold) {
+      throw new NotFoundException('Sold not found');
+    }
+    return await this.soldsRepository.delete(id);
   }
 }
