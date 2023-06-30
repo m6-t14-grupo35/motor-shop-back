@@ -44,7 +44,7 @@ model Image {
   image_3    String?
   image_4    String?
   image_5    String?
-  ad         Ad       @relation(fields: [ad_id], references: [id])
+  ad         Ad       @relation(fields: [ad_id], references: [id], onDelete: Cascade)
   ad_id      String   @unique
   created_at DateTime
 
@@ -63,7 +63,7 @@ model Ad {
   priceFIPE   Int
   description String
   is_sold     Boolean  @default(false)
-  User        User     @relation(fields: [user_id], references: [id])
+  User        User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
   user_id     String
   created_at  DateTime
 
@@ -77,9 +77,9 @@ model Ad {
 model Comment {
   id         String   @id
   text       String   @db.Text
-  ad         Ad       @relation(fields: [ad_id], references: [id])
+  ad         Ad       @relation(fields: [ad_id], references: [id], onDelete: Cascade)
   ad_id      String
-  User       User     @relation(fields: [user_id], references: [id])
+  User       User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
   user_id    String
   created_at DateTime
   updated_at DateTime @updatedAt
@@ -89,9 +89,9 @@ model Comment {
 
 model Sold {
   id         String   @id
-  ad         Ad       @relation(fields: [ad_id], references: [id])
+  ad         Ad       @relation(fields: [ad_id], references: [id], onDelete: Cascade)
   ad_id      String   @unique
-  User       User     @relation(fields: [user_id], references: [id])
+  User       User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
   user_id    String
   created_at DateTime
 

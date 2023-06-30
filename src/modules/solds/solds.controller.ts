@@ -1,4 +1,13 @@
-import { Controller, Get, Post, Body, Request, Param, Delete, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Request,
+  Param,
+  Delete,
+  UseGuards,
+} from '@nestjs/common';
 import { SoldsService } from './solds.service';
 import { CreateSoldDto } from './dto/create-sold.dto';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
@@ -12,8 +21,16 @@ export class SoldsController {
   @Post(':ad_id')
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
-  create(@Body() createSoldDto: CreateSoldDto, @Param('ad_id') ad_id: string, @Request() req) {
-    return this.soldsService.create(createSoldDto, ad_id, req.user.id);
+  create(
+    @Body() createSoldDto: CreateSoldDto,
+    @Param('ad_id') ad_id: string,
+    @Request() req,
+  ) {
+    return this.soldsService.create(
+      createSoldDto,
+      ad_id,
+      req.user.id /* req.user.is_seller */,
+    );
   }
 
   @Get()
