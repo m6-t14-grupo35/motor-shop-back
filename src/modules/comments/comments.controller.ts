@@ -1,4 +1,14 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Request, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  Request,
+  UseGuards,
+} from '@nestjs/common';
 import { CommentsService } from './comments.service';
 import { CreateCommentDto } from './dto/create-comment.dto';
 import { UpdateCommentDto } from './dto/update-comment.dto';
@@ -12,7 +22,11 @@ export class CommentsController {
 
   @Post(':ad_id')
   @UseGuards(JwtAuthGuard)
-  create(@Body() createCommentDto: CreateCommentDto, @Param('ad_id') ad_id: string, @Request() req ) {
+  create(
+    @Body() createCommentDto: CreateCommentDto,
+    @Param('ad_id') ad_id: string,
+    @Request() req,
+  ) {
     return this.commentsService.create(createCommentDto, ad_id, req.user.id);
   }
 
@@ -28,13 +42,17 @@ export class CommentsController {
 
   @Patch(':id')
   @UseGuards(JwtAuthGuard)
-  update(@Param('id') id: string, @Body() updateCommentDto: UpdateCommentDto) {
-    return this.commentsService.update(id, updateCommentDto);
+  update(
+    @Param('id') id: string,
+    @Body() updateCommentDto: UpdateCommentDto,
+    @Request() req,
+  ) {
+    return this.commentsService.update(id, updateCommentDto, req.user.id);
   }
 
   @Delete(':id')
   @UseGuards(JwtAuthGuard)
-  remove(@Param('id') id: string) {
-    return this.commentsService.remove(id);
+  remove(@Param('id') id: string, @Request() req) {
+    return this.commentsService.remove(id, req.user.id);
   }
 }
