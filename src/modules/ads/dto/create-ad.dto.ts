@@ -39,7 +39,7 @@ export class CreateAdDto {
   @ApiProperty()
   @IsEnum(FuelTypes)
   @IsNotEmpty()
-  fuel: string /* | FuelTypes */;
+  fuel: string;
 
   @ApiProperty()
   @IsNumber()
