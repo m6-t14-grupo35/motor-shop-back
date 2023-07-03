@@ -23,6 +23,10 @@ export class AdsService {
     return ad;
   }
 
+  async findComments(id: string) {
+    return await this.adsRepository.findComments(id);
+  }
+
   async update(id: string, updateAdDto: UpdateAdDto) {
     const ad = await this.adsRepository.findOne(id)
     if(!ad){

@@ -6,6 +6,7 @@ import { Ad } from '../../entities/ad.entity';
 import { plainToInstance } from 'class-transformer';
 import { UpdateAdDto } from '../../dto/update-ad.dto';
 import { Decimal } from '@prisma/client/runtime';
+import { Comment } from 'src/modules/comments/entities/comment.entity';
 
 @Injectable()
 export class AdsPrismaRepository implements AdsRepository {
@@ -35,6 +36,14 @@ export class AdsPrismaRepository implements AdsRepository {
     });
     return ad
   }
+
+  async findComments(user_id: string): Promise<Comment[]> {
+    const comments = await this.prisma.comment.findMany({
+      where: { user_id },
+    });
+    return comments;
+  }
+
   async update(id: string, data: UpdateAdDto): Promise<Ad> {
     const ad = this.prisma.ad.update({
       where: { id },

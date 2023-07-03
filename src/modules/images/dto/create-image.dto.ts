@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsNotEmpty, IsString, IsUrl } from "class-validator";
+import { IsNotEmpty, IsOptional, IsString, IsUrl } from "class-validator";
 
 export class CreateImageDto {
     @ApiProperty()
@@ -8,26 +8,31 @@ export class CreateImageDto {
     cover: string;
 
     @ApiProperty()
+    @IsOptional()
     @IsString()
     @IsNotEmpty()
     image_1: string;
 
     @ApiProperty()
+    @IsOptional()
     @IsString()
     @IsNotEmpty()
     image_2: string;
 
     @ApiProperty()
+    @IsOptional()
     @IsString()
     @IsNotEmpty()
     image_3: string;
 
     @ApiProperty()
+    @IsOptional()
     @IsString()
     @IsNotEmpty()
     image_4: string;
 
     @ApiProperty()
+    @IsOptional()
     @IsString()
     @IsNotEmpty()
     image_5: string;

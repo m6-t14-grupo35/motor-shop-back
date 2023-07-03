@@ -27,6 +27,11 @@ export class AdsController {
     return this.adsService.findOne(id);
   }
 
+  @Get(':id/comments')
+  findAds(@Param('id') id: string) {
+    return this.adsService.findComments(id);
+  }
+
   @Patch(':id')
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
