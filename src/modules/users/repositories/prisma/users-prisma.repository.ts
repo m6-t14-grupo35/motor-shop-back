@@ -37,10 +37,10 @@ export class UsersPrismaRepository implements UsersRepository {
     return plainToInstance(User, user);
   }
   async findAds(user_id: string): Promise<Ad[]> {
-    const ad = await this.prisma.ad.findMany({
+    const ads = await this.prisma.ad.findMany({
       where: { user_id },
     });
-    return ad;
+    return ads;
   }
 
   async findByEmail(email: string): Promise<User> {
