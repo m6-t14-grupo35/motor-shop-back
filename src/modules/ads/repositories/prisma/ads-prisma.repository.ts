@@ -37,9 +37,9 @@ export class AdsPrismaRepository implements AdsRepository {
     return ad
   }
 
-  async findComments(user_id: string): Promise<Comment[]> {
+  async findComments(ad_id: string): Promise<Comment[]> {
     const comments = await this.prisma.comment.findMany({
-      where: { user_id },
+      where: { ad_id },
     });
     return comments;
   }
