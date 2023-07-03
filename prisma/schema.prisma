@@ -81,6 +81,7 @@ model Comment {
   ad_id      String
   User       User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
   user_id    String
+  name       String
   created_at DateTime
   updated_at DateTime @updatedAt
 

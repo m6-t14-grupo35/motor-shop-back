@@ -5,7 +5,6 @@ export class Comment {
   readonly id: string;
   text: string;
   user_id: string;
-  User: User;
   name: string;
   ad_id: string;
   created_at: Date;
@@ -15,7 +14,6 @@ export class Comment {
   constructor() {
     this.id = randomUUID();
     this.created_at = new Date();
-    this.name = this.User.name
     //this.updated_at = null
     //this.deleted_at = null}
   }
