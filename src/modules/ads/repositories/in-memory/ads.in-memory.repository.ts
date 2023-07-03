@@ -4,9 +4,13 @@ import { CreateAdDto } from '../../dto/create-ad.dto';
 import { Ad } from '../../entities/ad.entity';
 import { AdsRepository } from '../ads.repository';
 import { UpdateAdDto } from '../../dto/update-ad.dto';
+import { Comment } from 'src/modules/comments/entities/comment.entity';
 
 @Injectable()
 export class AdsInMemoryRepository implements AdsRepository {
+  findComments(id: string): Comment[] | Promise<Comment[]> {
+    throw new Error('Method not implemented.');
+  }
   private database: Ad[] = [];
   create(data: CreateAdDto, user_id: string): Ad | Promise<Ad> {
     const newAd = new Ad();
