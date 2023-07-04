@@ -3,12 +3,14 @@ import {
   IsBoolean,
   IsDecimal,
   IsEnum,
+  IsInstance,
   IsNotEmpty,
   IsNumber,
   IsOptional,
   IsString,
   MaxLength,
 } from 'class-validator';
+import { Image } from 'src/modules/images/entities/image.entity';
 
 enum FuelTypes {
   GASOLINA = 'Gasolina',

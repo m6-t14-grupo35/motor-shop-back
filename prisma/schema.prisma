@@ -21,6 +21,7 @@ model User {
   description  String
   is_seller    Boolean
   cpf          String
+  image        String?
 
   zip_code   String
   state      String
@@ -71,17 +72,21 @@ model Ad {
   Comment Comment[]
   Sold    Sold?
 
+  user_img         String?
+  user_description String?
+  user_name        String?
+
   @@map("ads")
 }
 
 model Comment {
   id         String   @id
+  name       String
   text       String   @db.Text
   ad         Ad       @relation(fields: [ad_id], references: [id], onDelete: Cascade)
   ad_id      String
   User       User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
   user_id    String
-  name       String
   created_at DateTime
   updated_at DateTime @updatedAt
 

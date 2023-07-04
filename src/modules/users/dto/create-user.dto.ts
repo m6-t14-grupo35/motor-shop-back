@@ -7,6 +7,7 @@ import {
   IsEmail,
   IsNotEmpty,
   IsNumber,
+  IsOptional,
   IsString,
   Length,
   MaxLength,
@@ -41,7 +42,6 @@ export class CreateUserDto {
   @MaxLength(30)
   phone_number: string;
 
-  /* @IsDate() */
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
@@ -63,7 +63,11 @@ export class CreateUserDto {
   @Length(11)
   cpf: string;
 
-  //
+  @ApiProperty()
+  @IsOptional()
+  @IsString()
+  image: string;
+  
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
