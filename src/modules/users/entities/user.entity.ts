@@ -11,6 +11,7 @@ export class User {
   description: string;
   is_seller: boolean;
   cpf: string;
+  image: string;
 
   zip_code: string;
   state: string;

@@ -3,9 +3,7 @@ import { PrismaService } from 'src/database/prisma.service';
 import { AdsRepository } from '../ads.repository';
 import { CreateAdDto } from '../../dto/create-ad.dto';
 import { Ad } from '../../entities/ad.entity';
-import { plainToInstance } from 'class-transformer';
 import { UpdateAdDto } from '../../dto/update-ad.dto';
-import { Decimal } from '@prisma/client/runtime';
 import { Comment } from 'src/modules/comments/entities/comment.entity';
 
 @Injectable()
@@ -13,15 +11,20 @@ export class AdsPrismaRepository implements AdsRepository {
   constructor(private prisma: PrismaService) {}
   async create(data: CreateAdDto, user_id: string): Promise<Ad> {
     const ad = new Ad();
+    const user = await this.prisma.user.findUnique({ where: { id: user_id } });
     Object.assign(ad, {
       ...data,
       user_id: user_id,
+      user_name: user.name,
+      user_img: user.image,
+      user_description: user.description,
     });
+
     const newAd = await this.prisma.ad.create({
-        data: {
-          ...ad,
-        },
-      });
+      data: {
+        ...ad,
+      },
+    });
 
     return newAd;
   }
@@ -29,12 +32,13 @@ export class AdsPrismaRepository implements AdsRepository {
     const ads = await this.prisma.ad.findMany();
     return ads;
   }
- 
+
   async findOne(id: string): Promise<Ad> {
     const ad = await this.prisma.ad.findUnique({
-      where: { id }
+      where: { id },
+      include: { Image: true, Comment: true },
     });
-    return ad
+    return ad;
   }
 
   async findComments(ad_id: string): Promise<Comment[]> {
