@@ -14,10 +14,9 @@ export class CommentsPrismaRepository implements CommentsRepository {
     user_id: string,
   ): Promise<Comment> {
     const comment = new Comment();
-    const user = await this.prisma.user.findUnique({ where: { id: user_id } });
+
     Object.assign(comment, {
       ...data,
-      name: user.name,
       ad_id: ad_id,
       user_id: user_id,
     });
@@ -31,13 +30,16 @@ export class CommentsPrismaRepository implements CommentsRepository {
     return newComment;
   }
   async findAll(): Promise<Comment[]> {
-    const comments = await this.prisma.comment.findMany();
+    const comments = await this.prisma.comment.findMany({
+      include: { User: { select: { name: true } } },
+    });
     return comments;
   }
 
   async findOne(id: string): Promise<Comment> {
     const comment = await this.prisma.comment.findUnique({
       where: { id },
+      include: { User: { select: { name: true } } },
     });
     return comment;
   }
