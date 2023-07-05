@@ -39,7 +39,17 @@ export class UsersPrismaRepository implements UsersRepository {
   async findAds(user_id: string): Promise<Ad[]> {
     const ads = await this.prisma.ad.findMany({
       where: { user_id },
-      include: { Image: true, Comment: true },
+      include: {
+        Image: true,
+        Comment: true,
+        User: {
+          select: {
+            name: true,
+            image: true,
+            description: true,
+          },
+        },
+      },
     });
     return ads;
   }

@@ -17,7 +17,7 @@ export class MailService {
 
   async sendEmail({ to, subject, text, from }: SendEmailDto) {
     await this.mailerService
-      .sendMail({ to, subject, html:text, from })
+      .sendMail({ to, subject, html: text, from })
       .then(() => {
         console.log('Email successfully sent!');
       })

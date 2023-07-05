@@ -8,9 +8,13 @@ import { AdsInMemoryRepository } from './repositories/in-memory/ads.in-memory.re
 
 @Module({
   controllers: [AdsController],
-  providers: [AdsService, PrismaService, {
-    provide: AdsRepository,
-    useClass: AdsPrismaRepository
-  }]
+  providers: [
+    AdsService,
+    PrismaService,
+    {
+      provide: AdsRepository,
+      useClass: AdsPrismaRepository,
+    },
+  ],
 })
 export class AdsModule {}

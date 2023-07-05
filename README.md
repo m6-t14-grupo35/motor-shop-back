@@ -32,6 +32,12 @@
 $ npm install
 ```
 
+## Migrations
+
+```bash
+$ npx prisma migrate dev
+```
+
 ## Running the app
 
 ```bash
@@ -75,3 +81,8 @@ Nest is [MIT licensed](LICENSE).
 ## Documentation
 
 Motor Shop API documentation - (http://localhost:3001/api/)
+Doc endpoint - (' ./api ')
+
+## Deploy URL
+
+Motor Shop URL in Render - (https://motor-shop-vglo.onrender.com)

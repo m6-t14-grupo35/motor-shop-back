@@ -1,16 +1,13 @@
 import { ApiProperty } from '@nestjs/swagger';
 import {
   IsBoolean,
-  IsDecimal,
   IsEnum,
-  IsInstance,
   IsNotEmpty,
   IsNumber,
   IsOptional,
   IsString,
   MaxLength,
 } from 'class-validator';
-import { Image } from 'src/modules/images/entities/image.entity';
 
 enum FuelTypes {
   GASOLINA = 'Gasolina',
@@ -55,7 +52,7 @@ export class CreateAdDto {
   color: string;
 
   @ApiProperty()
-  @IsNumber() //@IsDecimal
+  @IsNumber()
   @IsNotEmpty()
   price: number;
 

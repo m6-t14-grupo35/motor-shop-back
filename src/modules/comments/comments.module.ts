@@ -7,9 +7,13 @@ import { CommentsPrismaRepository } from './repositories/prisma/comments-prisma.
 
 @Module({
   controllers: [CommentsController],
-  providers: [CommentsService, PrismaService, {
-    provide: CommentsRepository,
-    useClass: CommentsPrismaRepository
-  }]
+  providers: [
+    CommentsService,
+    PrismaService,
+    {
+      provide: CommentsRepository,
+      useClass: CommentsPrismaRepository,
+    },
+  ],
 })
 export class CommentsModule {}

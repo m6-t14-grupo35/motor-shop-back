@@ -29,7 +29,7 @@ export class SoldsController {
     return this.soldsService.create(
       createSoldDto,
       ad_id,
-      req.user.id /* req.user.is_seller */,
+      req.user.id,
     );
   }
 
