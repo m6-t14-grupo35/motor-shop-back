@@ -77,7 +77,6 @@ model Ad {
 
 model Comment {
   id         String   @id
-  name       String
   text       String   @db.Text
   ad         Ad       @relation(fields: [ad_id], references: [id], onDelete: Cascade)
   ad_id      String
