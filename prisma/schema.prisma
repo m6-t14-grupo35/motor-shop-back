@@ -72,10 +72,6 @@ model Ad {
   Comment Comment[]
   Sold    Sold?
 
-  user_img         String?
-  user_description String?
-  user_name        String?
-
   @@map("ads")
 }
 
