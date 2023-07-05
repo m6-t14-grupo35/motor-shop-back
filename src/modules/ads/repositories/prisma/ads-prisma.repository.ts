@@ -29,9 +29,7 @@ export class AdsPrismaRepository implements AdsRepository {
     return newAd;
   }
   async findAll(): Promise<Ad[]> {
-    const ads = await this.prisma.ad.findMany(/* {
-      take: 6,
-    } */);
+    const ads = await this.prisma.ad.findMany({ take: 6 });
     /* const firstAd = ads[5]
     const cursor = firstAd.id
     const pgAds = await this.prisma.ad.findMany({
@@ -40,13 +38,23 @@ export class AdsPrismaRepository implements AdsRepository {
       cursor: { id: cursor}
     });
     return pgAds;*/
-    return ads
+    return ads;
   }
 
   async findOne(id: string): Promise<Ad> {
     const ad = await this.prisma.ad.findUnique({
       where: { id },
-      include: { Image: true, Comment: true },
+      include: {
+        Image: true,
+        Comment: true,
+        User: {
+          select: {
+            name: true,
+            image: true,
+            description: true,
+          },
+        },
+      },
     });
     return ad;
   }

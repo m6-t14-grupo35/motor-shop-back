@@ -9,7 +9,5 @@ export class Sold {
   constructor() {
     this.id = randomUUID();
     this.created_at = new Date();
-    //this.updated_at = null
-    //this.deleted_at = null}
   }
 }

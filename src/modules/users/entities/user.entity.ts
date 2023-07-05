@@ -19,11 +19,9 @@ export class User {
   street: string;
   number: number;
   complement: string;
-  
+
   Ad?: Ad[];
   readonly created_at: Date;
-  //updated_at: Date
-  //deleted_at: Date
 
   @Exclude()
   password: string;
@@ -31,7 +29,5 @@ export class User {
   constructor() {
     this.id = randomUUID();
     this.created_at = new Date();
-    //this.updated_at = null
-    //this.deleted_at = null
   }
 }

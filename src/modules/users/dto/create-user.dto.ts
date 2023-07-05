@@ -67,7 +67,7 @@ export class CreateUserDto {
   @IsOptional()
   @IsString()
   image: string;
-  
+
   @ApiProperty()
   @IsString()
   @IsNotEmpty()

@@ -7,9 +7,13 @@ import { SoldsPrismaRepository } from './repositories/prisma/solds-prisma.reposi
 
 @Module({
   controllers: [SoldsController],
-  providers: [SoldsService, PrismaService, {
-    provide: SoldsRepository,
-    useClass: SoldsPrismaRepository
-  }]
+  providers: [
+    SoldsService,
+    PrismaService,
+    {
+      provide: SoldsRepository,
+      useClass: SoldsPrismaRepository,
+    },
+  ],
 })
 export class SoldsModule {}

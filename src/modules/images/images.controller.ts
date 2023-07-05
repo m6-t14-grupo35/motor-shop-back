@@ -42,7 +42,10 @@ export class ImagesController {
   @Patch(':ad_id')
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
-  update(@Param('ad_id') ad_id: string, @Body() updateImageDto: UpdateImageDto) {
+  update(
+    @Param('ad_id') ad_id: string,
+    @Body() updateImageDto: UpdateImageDto,
+  ) {
     return this.imagesService.update(ad_id, updateImageDto);
   }
 

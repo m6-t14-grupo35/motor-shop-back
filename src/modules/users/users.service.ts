@@ -53,7 +53,7 @@ export class UsersService {
     return await this.usersRepository.findAds(id);
   }
 
-  async update(id: string,updateUserDto: UpdateUserDto) {
+  async update(id: string, updateUserDto: UpdateUserDto) {
     return await this.usersRepository.update(id, updateUserDto);
   }
 
