@@ -15,9 +15,6 @@ export class AdsPrismaRepository implements AdsRepository {
     Object.assign(ad, {
       ...data,
       user_id: user_id,
-      user_name: user.name,
-      user_img: user.image,
-      user_description: user.description,
     });
 
     const newAd = await this.prisma.ad.create({

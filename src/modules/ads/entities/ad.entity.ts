@@ -22,9 +22,6 @@ export class Ad {
   description: string;
   is_sold: boolean = false;
   user_id: string;
-  user_name: string;
-  user_img: string | null;
-  user_description: string;
   created_at: Date;
 
   constructor() {
