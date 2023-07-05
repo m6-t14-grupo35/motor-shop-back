@@ -29,8 +29,18 @@ export class AdsPrismaRepository implements AdsRepository {
     return newAd;
   }
   async findAll(): Promise<Ad[]> {
-    const ads = await this.prisma.ad.findMany();
-    return ads;
+    const ads = await this.prisma.ad.findMany(/* {
+      take: 6,
+    } */);
+    /* const firstAd = ads[5]
+    const cursor = firstAd.id
+    const pgAds = await this.prisma.ad.findMany({
+      skip: 1,
+      take: 6,
+      cursor: { id: cursor}
+    });
+    return pgAds;*/
+    return ads
   }
 
   async findOne(id: string): Promise<Ad> {

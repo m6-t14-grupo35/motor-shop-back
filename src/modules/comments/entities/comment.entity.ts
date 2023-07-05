@@ -1,5 +1,4 @@
 import { randomUUID } from 'crypto';
-import { User } from 'src/modules/users/entities/User.entity';
 
 export class Comment {
   readonly id: string;
