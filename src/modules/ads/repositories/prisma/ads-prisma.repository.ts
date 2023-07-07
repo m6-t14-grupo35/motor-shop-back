@@ -3,6 +3,7 @@ import { PrismaService } from 'src/database/prisma.service';
 import { AdsRepository } from '../ads.repository';
 import { CreateAdDto } from '../../dto/create-ad.dto';
 import { Ad } from '../../entities/ad.entity';
+import { User } from 'src/modules/users/entities/user.entity';
 import { UpdateAdDto } from '../../dto/update-ad.dto';
 import { Comment } from 'src/modules/comments/entities/comment.entity';
 
@@ -59,6 +60,7 @@ export class AdsPrismaRepository implements AdsRepository {
   async findComments(ad_id: string): Promise<Comment[]> {
     const comments = await this.prisma.comment.findMany({
       where: { ad_id },
+      include: { User: { select: { id: true, name: true, image: true } } },
     });
     return comments;
   }
