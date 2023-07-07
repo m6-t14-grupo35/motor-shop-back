@@ -4,12 +4,12 @@
 
 - [Description](#1-description)
 - [Diagrama ER](#2-diagrama-er)
-- [Início Rápido](#3-início-rápido)
-  - [Instalando dependências](#31-instalando-dependências)
-  - [Variáveis de ambiente](#32-variáveis-de-ambiente)
-  - [Migrations](#33-migrations)
-  - [Rodando a aplicação](#34-rodando-a-aplicação)
-- [Endpoints](#4-endpoints)
+- [Install dependencies](#3-install-dependencies)
+- [Environment variables](#4-environment-variables)
+- [Migrations](#5-migrations)
+- [Running app](#6-running-app)
+- [Documentation](#7-documentation)
+- [Deploy URL](#8-deploy-url)
 
 ## 1. Description
 
@@ -17,7 +17,7 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## 2. Diagrama ER
+## 2. ER Diagram 
 
 [ Roll to top ](#content-table)
 
@@ -27,19 +27,42 @@ API ER diagram displaying table relationship in database.
 
 ---
 
-## Installation
+## 3. Install depedencies
+
+[ Roll to top ](#content-table)
+
+Clone the project in your advice and install the dependencies:
 
 ```bash
 $ npm install
 ```
 
-## Migrations
+### 4. Environment variables
+
+[ Roll to top ](#content-table)
+
+Then, create a **.env** file, according to **.env.example** file:
+
+```
+cp .env.example .env
+```
+Set your environment variables with Postgres credentials, choose a new database and define secret key.
+
+## 5. Migrations
+
+[ Roll to top ](#content-table)
+
+Execute migrations:
 
 ```bash
 $ npx prisma migrate dev
 ```
 
-## Running the app
+## 6.Running app
+
+[ Roll to top ](#content-table)
+
+Bash commands to run the application:
 
 ```bash
 # development
@@ -52,38 +75,13 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
-
-## Documentation
+## 7. Documentation
+[ Roll to top ](#content-table)
 
 Motor Shop API documentation - (http://localhost:3001/api/)
 Doc endpoint - (' ./api ')
 
-## Deploy URL
+## 8. Deploy URL
+[ Roll to top ](#content-table)
 
 Motor Shop URL in Render - (https://motor-shop-vglo.onrender.com)
